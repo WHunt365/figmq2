@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Turn Based Game</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="game-container">
+        <div class="left-panel">
+            <h1>Turn Based Coding Game</h1>
+            <div class="floor-info">
+                <h3>Floor: <span id="floorNumber">1</span></h3>
+            </div>
+            <div class="characters-container">
+                <h2>Your Characters</h2>
+                <div class="characters">
+                    <div class="character" id="knight" data-index="0">
+                    <button class="character-button" data-index="0" aria-label="Select Knight">
+                        <img src="images/THE KNIGHT.png" alt="Knight" class="character-img" />
+                    </button>
+                    <h3>Knight</h3>
+                    <div class="hp-bar-container">
+                        <div class="hp-bar-fill" style="width: 100%;"></div>
+                    </div>
+                    <p>HP: <span class="hp">100</span></p>
+                    <div class="attack-buttons" style="display:none;">
+                        <button class="attack-btn" id="attackButton-0">Attack</button>
+                        <button class="special-btn" id="specialButton-0">Special Attack</button>
+                    </div>
+                    <div class="arrow" style="display:none;">&#8595;</div>
+                    </div>
+                    <div class="character" id="wizard" data-index="1">
+                    <button class="character-button" data-index="1" aria-label="Select Wizard">
+                        <img src="images/THE WIZARD.png" alt="Wizard" class="character-img" />
+                    </button>
+                    <h3>Wizard</h3>
+                    <p>HP: <span class="hp">80</span></p>
+                    <div class="attack-buttons" style="display:none;">
+                        <button class="attack-btn" id="attackButton-1">Attack</button>
+                        <button class="special-btn" id="specialButton-1">Special Attack</button>
+                    </div>
+                    <div class="arrow" style="display:none;">&#8595;</div>
+                    </div>
+                    <div class="character" id="archer" data-index="2">
+                    <button class="character-button" data-index="2" aria-label="Select Archer">
+                        <img src="images/THE ARCHER.png" alt="Archer" class="character-img" />
+                    </button>
+                    <h3>Archer</h3>
+                    <p>HP: <span class="hp">90</span></p>
+                    <div class="attack-buttons" style="display:none;">
+                        <button class="attack-btn" id="attackButton-2">Attack</button>
+                        <button class="special-btn" id="specialButton-2">Special Attack</button>
+                    </div>
+                    <div class="arrow" style="display:none;">&#8595;</div>
+                    </div>
+                </div>
+            </div>
+            <div class="enemies-container">
+                <h2>Enemies</h2>
+                <div class="enemies">
+                    <div class="enemy" id="enemy0" data-index="0">
+                        <button class="enemy-button" data-index="0" aria-label="Select Enemy 1">
+                            <img src="images/SLIME.png" alt="Enemy 1" class="enemy-img" />
+                        </button>
+                        <h3>Enemy 1</h3>
+                        <p>HP: <span class="hp">100</span></p>
+                        <div class="arrow" style="display:none;">&#8595;</div>
+                    </div>
+                    <div class="enemy" id="enemy1" data-index="1">
+                        <button class="enemy-button" data-index="1" aria-label="Select Enemy 2">
+                            <img src="images/SLIME.png" alt="Enemy 2" class="enemy-img" />
+                        </button>
+                        <h3>Enemy 2</h3>
+                        <p>HP: <span class="hp">100</span></p>
+                        <div class="arrow" style="display:none;">&#8595;</div>
+                    </div>
+                    <div class="enemy" id="enemy2" data-index="2">
+                        <button class="enemy-button" data-index="2" aria-label="Select Enemy 3">
+                            <img src="images/SLIME.png" alt="Enemy 3" class="enemy-img" />
+                        </button>
+                        <h3>Enemy 3</h3>
+                        <p>HP: <span class="hp">100</span></p>
+                        <div class="arrow" style="display:none;">&#8595;</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-status">
+                <p id="status">Select a character and an enemy to attack</p>
+            </div>
+            <div class="game-controls">
+                <button id="attackButton" disabled>Attack</button>
+                <button id="specialButton" disabled>Special Attack</button>
+            </div>
+            <div class="code-input-container" style="display:none;">
+                <h3>Code Question (read carefully):</h3>
+                <div id="questionInput" style="white-space: pre-wrap; border: 1px solid #ccc; padding: 8px; height: 120px; overflow-y: auto; background-color: #f9f9f9; user-select: none;"></div>
+                <p style="font-style: italic; font-size: 0.9em; margin: 5px 0 10px 0;">
+                    Please type the missing part or output exactly as shown in the question above into the answer box below.
+                </p>
+                <h3>Your Answer:</h3>
+                <textarea id="codeInput" rows="6" cols="50" placeholder="Type your answer here..."></textarea>
+                <br />
+                <button id="submitCodeButton">Submit Code</button>
+            </div>
+            <div class="game-controls">
+                <button id="resetButton">Reset Game</button>
+            </div>
+        </div>
+        <div class="right-panel">
+            <div class="hp-stats">
+                <h2>HP Stats</h2>
+                <div id="selectedCharacterHp">
+                    <h3>Selected Character</h3>
+                    <p>HP: <span id="characterHpValue">-</span></p>
+                </div>
+                <div id="selectedEnemyHp">
+                    <h3>Selected Enemy</h3>
+                    <p>HP: <span id="enemyHpValue">-</span></p>
+                </div>
+            </div>
+            <div class="log-container">
+                <h2>Game Log</h2>
+                <div id="gameLog" style="height: 300px; overflow-y: auto; background: #eee; padding: 10px; border-radius: 5px;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/game.js"></script>
+</body>
+</html>
